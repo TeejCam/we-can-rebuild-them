@@ -9,6 +9,22 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        AVLTree tree = new AVLTree();
+
+        tree.insert(3);
+        tree.insert(4);
+        tree.insert(5);
+        tree.insert(6);
+
+        String serializedTree = tree.serialize(tree.root);
+        System.out.println(serializedTree);
+
+        tree.delete(4);
+        serializedTree = tree.serialize(tree.root);
+        System.out.println(serializedTree);
+
+        AVLTree.Node root = tree.deserialize(serializedTree);
+
+        tree.printTree(root);
     }
 }
